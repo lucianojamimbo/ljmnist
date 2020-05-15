@@ -1,7 +1,7 @@
+import numpy as np
+import gzip
 def ld():
     print("loading MNIST train files")
-    import gzip
-    import numpy as np
     imgs = gzip.open('data/train-images-idx3-ubyte.gz', 'r')
     labs = gzip.open('data/train-labels-idx1-ubyte.gz', 'r')
     imgs.read(16) #skip some data (this data can be useful but its more work to read it than to just hard code a couple numbers)
