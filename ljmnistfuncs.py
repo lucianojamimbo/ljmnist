@@ -21,7 +21,7 @@ def feedforwards(w, b, a):
         a = sigmoid(np.add(np.dot(zw, a), [item for sublist in zb for item in sublist]))
         activations.append(a)
         z.append(bs)
-    return np.array(activations), np.array(z)
+    return np.array(activations), np.(z)
 def cost(y, a):
     return np.sum(np.power(np.subtract(y, a), 2))
 def getdelta(activations, desiredoutput, z, delta, weights):    
@@ -30,3 +30,5 @@ def getdelta(activations, desiredoutput, z, delta, weights):
     while i < len(delta):
         delta[-i-1] = np.multiply(np.matmul(weights[-i].T, delta[-i]), sigmoidderiv(z[-i-1]))
         i+=1
+def ltlol(lst):
+    return [[itm] for itm in lst]
