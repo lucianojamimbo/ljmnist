@@ -10,7 +10,7 @@ def trainSGD(epochs, batch_size):
     while epoch < epochs:
         i = 0
         dataiter = 0
-        while i < 60000:
+        while i < 60000/batch_size:
             #make nabla_w and nabla_b full of zeros in the correct shape:
             nabla_w = nabla_w_zero
             nabla_b = nabla_b_zero
