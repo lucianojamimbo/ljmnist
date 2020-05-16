@@ -30,5 +30,5 @@ def test(test_amount, weights, biases):
         if data[item][1] == np.argmax(acti[-1]):
             correct +=1
         item +=1
-    print("correctly classified {0} images".format(correct))
+    print("correctly classified {0} images out of {1}".format(correct, test_amount))
     return correct
