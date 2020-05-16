@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, delta, weights, biases):
     graph = []
     epoch = 0
+    np.random.shuffle(data)
     while epoch < epochs:
         i = 0
         dataiter = 0
