@@ -87,5 +87,5 @@ nabla_b_zero = np.multiply(currentnablab, 0)
 
 #testing and training
 test(10000, weights, biases)
-trainSGD(5, 10, 0.2)
+trainSGD(5, 10, 0.09)
 test(10000, weights, biases)
