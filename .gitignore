@@ -2,3 +2,4 @@
 __pycache__/loaddata.cpython-37.pyc
 __pycache__/ljmnistfuncs.cpython-37.pyc
 __pycache__/plotdata.cpython-37.pyc
+*.pyc
