@@ -2,7 +2,6 @@ import gzip
 import numpy as np
 import ljmnistfuncs as lmf
 def test(test_amount, weights, biases):
-    print("loading MNIST test files")
     imgs = gzip.open('data/t10k-images-idx3-ubyte.gz', 'r')
     labs = gzip.open('data/t10k-labels-idx1-ubyte.gz', 'r')
     imgs.read(16) #skip some data (this data can be useful but its more work to read it than to just hard code a couple numbers)
@@ -18,7 +17,6 @@ def test(test_amount, weights, biases):
         i+=1
     data = np.asarray(imglst)
     del imglst #die
-    print("MNIST test files loaded")
     correct = 0
     item = 0
     while item < test_amount:
