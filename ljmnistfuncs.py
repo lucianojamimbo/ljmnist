@@ -18,17 +18,20 @@ def feedforwards(w, b, a):
     activations.append(a)
     for zw, zb in zip(w, b):
         bs = np.add(np.dot(zw, a), [item for sublist in zb for item in sublist]) 
-        a = sigmoid(np.add(np.dot(zw, a), [item for sublist in zb for item in sublist]))
+        a = sigmoid(bs)
         activations.append(a)
         z.append(bs)
     return np.array(activations), np.array(z)
+#basic cost function
 def cost(y, a):
     return np.sum(np.power(np.subtract(y, a), 2))
+#this one is important! this gets delta, the error for all biases and weights.
 def getdelta(activations, desiredoutput, z, delta, weights):    
     delta[-1] = np.multiply(np.subtract(activations[-1], desiredoutput), sigmoidderiv(z[-1])) #error in the output layer
     i = 1 #start at one because error in output is already done
     while i < len(delta):
         delta[-i-1] = np.multiply(np.matmul(weights[-i].T, delta[-i]), sigmoidderiv(z[-i-1]))
         i+=1
+#list to list of lists
 def ltlol(lst):
     return [[itm] for itm in lst]
