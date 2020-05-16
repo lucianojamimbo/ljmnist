@@ -1,8 +1,9 @@
 from testaccuracy import test
 import numpy as np
-import ljmnistfuncs as lmf #import all the basic functions
-
+import ljmnistfuncs as lmf
+import matplotlib.pyplot as plt
 def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, delta, weights, biases):
+    graph = []
     epoch = 0
     while epoch < epochs:
         i = 0
@@ -40,5 +41,8 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
                 nbi+=1
             i+=1
         print("epoch {0} complete".format(epoch+1))
+        print("accuracy this epoch:")
+        graph.append(test(1000, weights, biases))
         epoch +=1
+    plt.plot(graph)
     return weights, biases
