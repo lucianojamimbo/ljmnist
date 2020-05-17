@@ -2,6 +2,7 @@ from testaccuracy import test
 import numpy as np
 import ljmnistfuncs as lmf
 import matplotlib.pyplot as plt
+import copy
 def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, delta, weights, biases):
     graph = []
     epoch = 0
@@ -11,8 +12,8 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
         dataiter = 0
         while i < 60000/batch_size:
             #make nabla_w and nabla_b full of zeros in the correct shape:
-            nabla_w = nabla_w_zero
-            nabla_b = nabla_b_zero
+            nabla_w = copy.deepcopy(nabla_w_zero)
+            nabla_b = copy.deepcopy(nabla_b_zero)
             #get a batch
             btch = 0
             batch = []
@@ -34,11 +35,13 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
                     currentnablab.append(d)
                 nabla_w = np.add(nabla_w, currentnablaw)
                 nabla_b = np.add(nabla_b, currentnablab)
+            nabla_w = np.divide(nabla_w, batch_size)
+            nabla_b = np.divide(nabla_b, batch_size)
             #below changes the weights and biases according to nabla_b and nabla_w
-            weights -= np.multiply(eta, nabla_w)
+            weights -= np.multiply(np.divide(eta, batch_size), nabla_w)
             nbi = 0
             for nb in nabla_b:
-                biases[nbi] -= lmf.ltlol(np.multiply(eta, nb))
+                biases[nbi] -= lmf.ltlol(np.multiply(np.divide(eta, batch_size), nb))
                 nbi+=1
             i+=1
         print("epoch {0} complete".format(epoch+1))
