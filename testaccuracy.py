@@ -22,9 +22,7 @@ def test(test_amount, weights, biases):
     while item < test_amount:
         desiredoutput = np.zeros(10)
         desiredoutput[data[item][1]] = 1
-        
         acti, z = lmf.feedforwards(weights, biases, data[item][0])
-        
         if data[item][1] == np.argmax(acti[-1]):
             correct +=1
         item +=1
