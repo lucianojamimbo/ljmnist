@@ -28,7 +28,7 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
                 currentnablaw = []
                 currentnablab = []
                 acti, presig = lmf.feedforwards(weights, biases, item[0])
-                lmf.getdelta(acti, desiredoutput, presig, delta, weights)
+                delta = lmf.getdelta(acti, desiredoutput, presig, delta, weights)
                 for a, d in zip(acti, delta):
                     currentnablaw.append(np.transpose(np.matmul((lmf.ltlol(a)), np.transpose(lmf.ltlol(d)))))
                 for d in delta:
