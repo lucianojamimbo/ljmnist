@@ -40,7 +40,7 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
             #below changes the weights and biases according to nabla_b and nabla_w
             weights = np.subtract(weights, (np.multiply(eta, nabla_w)))
             nbi = 0
-            for nb in nabla_b:
+            for nb in nabla_b: #replace this for loop with something
                 biases[nbi] = np.subtract(biases[nbi], (lmf.ltlol(np.multiply(eta, nb))))
                 nbi+=1
             i+=1
