@@ -11,6 +11,7 @@ def ld():
     while i < 60000:
         buf = imgs.read(28 * 28 * 1)
         image = np.frombuffer(buf, dtype=np.uint8)
+        image = np.divide(image, 255)
         labelbuf = labs.read(1)
         label = np.frombuffer(labelbuf, dtype=np.uint8)
         imglst.append((image, label))
