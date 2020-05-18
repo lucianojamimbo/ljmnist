@@ -34,7 +34,7 @@ def getdelta(activations, desiredoutput, z, delta, weights):
         i+=1
     return delta
 #list to list of lists
-def ltlol(lst):
+def ltlol(lst): #THIS IS SLOOOOW AND BAAAAD
     return [[itm] for itm in lst]
 #get nabla_w_zero and nabla_b_zero
 def nbnwzero(weights, biases, delta, sizes):
