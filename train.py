@@ -28,7 +28,7 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
                 currentnablaw = []
                 currentnablab = []
                 acti, presig = lmf.feedforwards(weights, biases, item[0])
-                lmf.getdelta(acti, desiredoutput, presig, delta, weights) #there is an issue with this somewhere
+                lmf.getdelta(acti, desiredoutput, presig, delta, weights)
                 for a, d in zip(acti, delta):
                     currentnablaw.append(np.transpose(np.matmul((lmf.ltlol(a)), np.transpose(lmf.ltlol(d)))))
                 for d in delta:
@@ -38,10 +38,10 @@ def trainSGD(epochs, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, d
             nabla_w = np.divide(nabla_w, batch_size)
             nabla_b = np.divide(nabla_b, batch_size)
             #below changes the weights and biases according to nabla_b and nabla_w
-            weights -= np.multiply(np.divide(eta, batch_size), nabla_w)
+            weights = np.subtract(weights, (np.multiply(eta, nabla_w)))
             nbi = 0
             for nb in nabla_b:
-                biases[nbi] -= lmf.ltlol(np.multiply(np.divide(eta, batch_size), nb))
+                biases[nbi] = np.subtract(biases[nbi], (lmf.ltlol(np.multiply(eta, nb))))
                 nbi+=1
             i+=1
         print("epoch {0} complete".format(epoch+1))
