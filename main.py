@@ -12,7 +12,7 @@ np.random.shuffle(data) #randomise our data
 nabla_b_zero, nabla_w_zero = lmf.nbnwzero(weights, biases, delta, sizes) #get nabla_w_zero and nabla_b_zero
 start = time.time()
 #epoch_amount, batch_size, eta, data, nabla_w_zero, nabla_b_zero, sizes, delta, weights, biases
-weights, biases = trainSGD(15, 10, 3, data, nabla_w_zero, nabla_b_zero, sizes, delta, weights, biases) #training time
+weights, biases = trainSGD(30, 10, 1, data, nabla_w_zero, nabla_b_zero, sizes, delta, weights, biases) #training time
 end = time.time()
 test(10000, weights, biases)
 print("time taken for training (s):", end-start)
