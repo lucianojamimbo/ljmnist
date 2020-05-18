@@ -10,7 +10,7 @@ def init(sizes):
     biases = [np.random.randn(y, 1) for y in sizes[1:]]
     weights = [np.random.randn(y, x) for x, y in zip(sizes[:-1], sizes[1:])]
     delta = list(np.zeros(len(sizes)-1)) #fill delta with 0s then convert to list
-    return weights, biases, delta
+    return np.array(weights), np.array(biases), delta
 #returns a list of all neuron activations, and z for pre-sigmoided activations
 def feedforwards(w, b, a):
     activations = []
@@ -32,6 +32,7 @@ def getdelta(activations, desiredoutput, z, delta, weights):
     while i < len(delta):
         delta[-i-1] = np.multiply(np.matmul(weights[-i].T, delta[-i]), sigmoidderiv(z[-i-1]))
         i+=1
+    return delta
 #list to list of lists
 def ltlol(lst):
     return [[itm] for itm in lst]
